@@ -15,14 +15,14 @@ namespace ECS.NET
         internal EntityComponentSystem Parent;
         internal List<int> ComponentIDs;
         internal List<Type> reqTypes;
-        internal int id;
+        public int Id { get; private set; }
 
         internal Entity(EntityComponentSystem parent, int id)
         {
             Parent = parent;
             ComponentIDs = new List<int>();
             reqTypes = new List<Type>();
-            this.id = id;
+            this.Id = id;
         }
 
         /// <summary>
@@ -59,7 +59,14 @@ namespace ECS.NET
 
         internal bool MeetsRequirements(Type[] types)
         {
-            return types.Except(reqTypes).Any();
+            if (types == null) return true;
+            
+            for(int i = 0; i < types.Length; i++)
+            {
+                if (!reqTypes.Contains(types[i])) return false;
+            }
+
+            return true;
         }
 
         /// <summary>

@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECS.NET", "ECS.NET\ECS.NET.csproj", "{F5241089-B44C-408D-9166-77355C3AB70D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECSTests", "ECSTests\ECSTests.csproj", "{5267F519-B445-412F-A819-3A701BDAA959}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F5241089-B44C-408D-9166-77355C3AB70D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5241089-B44C-408D-9166-77355C3AB70D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5241089-B44C-408D-9166-77355C3AB70D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5267F519-B445-412F-A819-3A701BDAA959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5267F519-B445-412F-A819-3A701BDAA959}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5267F519-B445-412F-A819-3A701BDAA959}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5267F519-B445-412F-A819-3A701BDAA959}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

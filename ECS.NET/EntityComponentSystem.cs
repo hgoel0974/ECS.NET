@@ -9,7 +9,7 @@ namespace ECS.NET
     /// <summary>
     /// Entity Component System
     /// </summary>
-    public class EntityComponentSystem
+    public class EntityComponentSystem : IDisposable
     {
         public ComponentPool ComponentCollection;
 
@@ -60,5 +60,17 @@ namespace ECS.NET
 
         }
 
+
+        public void Dispose()
+        {
+            for(int i = 0; i < systems.Count; i++)
+            {
+                systems[i].Dispose();
+            }
+            systems.Clear();
+
+            ComponentCollection.Dispose();
+            entities.Clear();
+        }
     }
 }
