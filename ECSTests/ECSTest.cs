@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ECS.NET;
 
@@ -39,6 +41,15 @@ namespace ECSTests
             public void Dispose()
             {
                 
+            }
+
+
+            public void Activate(IEnumerable<Entity> e)
+            {
+                foreach (var item in e)
+                {
+                    Console.WriteLine(item.Id);
+                }
             }
         }
 

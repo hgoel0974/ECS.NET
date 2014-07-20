@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECS.NET
 {
@@ -18,16 +15,36 @@ namespace ECS.NET
             components = new List<IComponent>();
         }
 
+        /// <summary>
+        /// Add a new component to the system
+        /// </summary>
+        /// <param name="c">The component to add</param>
+        /// <returns>The GLOBAL ID of the component</returns>
         public int AddComponent(IComponent c)
         {
             components.Add(c);
             return components.Count - 1;    //Return the id of the added component
         }
 
+        /// <summary>
+        /// Remove the specified component from the system
+        /// </summary>
+        /// <param name="id">The GLOBAL ID of the component to remove</param>
         public void RemoveComponent(int id)
         {
             components[id].Dispose();
             components.RemoveAt(id);
+        }
+
+        /// <summary>
+        /// Returns the component specified
+        /// </summary>
+        /// <typeparam name="T">The type of the component to return</typeparam>
+        /// <param name="id">The GLOBAL ID of the component to get</param>
+        /// <returns>The specified component</returns>
+        public T GetComponent<T>(int id) where T:IComponent
+        {
+            return (T)components[id];
         }
 
         public IComponent this[int index]

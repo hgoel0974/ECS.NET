@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECS.NET
 {
@@ -11,10 +8,35 @@ namespace ECS.NET
     /// </summary>
     public class EntityComponentSystem : IDisposable
     {
+        /// <summary>
+        /// The collection of all the components in the system
+        /// </summary>
         public ComponentPool ComponentCollection;
 
         private List<Entity> entities;
         private List<ISystem> systems;
+
+        /// <summary>
+        /// Gets all the registered entities
+        /// </summary>
+        public List<Entity> Entities
+        {
+            get
+            {
+                return entities;
+            }
+        }
+
+        /// <summary>
+        /// Gets all the registered systems
+        /// </summary>
+        public List<ISystem> Systems
+        {
+            get
+            {
+                return systems;
+            }
+        }
 
         public EntityComponentSystem()
         {
@@ -23,6 +45,10 @@ namespace ECS.NET
             entities = new List<Entity>();
         }
 
+        /// <summary>
+        /// Create a new entity and register it to the system
+        /// </summary>
+        /// <returns>The new entity</returns>
         public Entity CreateEntity()
         {
             entities.Add(new Entity(this, entities.Count));

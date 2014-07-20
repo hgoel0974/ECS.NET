@@ -1,15 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ECS.NET
 {
+    /// <summary>
+    /// System interface
+    /// </summary>
     public interface ISystem : IDisposable
     {
+        /// <summary>
+        /// Activates the system on the specified entity
+        /// </summary>
+        /// <param name="e"></param>
         void Activate(Entity e);
+
+        /// <summary>
+        /// Activates the system on the specified entities
+        /// </summary>
+        /// <param name="e"></param>
+        void Activate(IEnumerable<Entity> e);
+
+        /// <summary>
+        /// Get the components an entity is required to have in order for it to be processed
+        /// </summary>
+        /// <returns>The types of the components required</returns>
         Type[] ComponentRequirements();
     }
 
+    /// <summary>
+    /// Entity object
+    /// </summary>
     public class Entity
     {
         internal EntityComponentSystem Parent;
@@ -74,13 +94,16 @@ namespace ECS.NET
         /// </summary>
         /// <param name="index">the LOCAL ID of the component</param>
         /// <returns>the component</returns>
-        public IComponent GetComponent(int index)
+        public T GetComponent<T>(int index) where T : IComponent
         {
-            return Parent.ComponentCollection[ComponentIDs[index]];
+            return (T)Parent.ComponentCollection[ComponentIDs[index]];
         }
 
     }
 
+    /// <summary>
+    /// Component interface
+    /// </summary>
     public interface IComponent : IDisposable{
 
     }
