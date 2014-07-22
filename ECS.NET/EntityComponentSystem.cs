@@ -77,13 +77,8 @@ namespace ECS.NET
                 List<Entity> tmp = entities.FindAll(e => e.MeetsRequirements(reqs));
 
                 //Process all the entities that the system can handle
-                for(int j = 0; j < tmp.Count; j++)
-                {
-                    systems[i].Activate(tmp[j]);
-                }
-
+                if (tmp.Count > 0) systems[i].Activate(tmp);
             }
-
         }
 
 
